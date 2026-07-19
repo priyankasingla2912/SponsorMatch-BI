@@ -17,7 +17,7 @@ A creator analytics dashboard that helps influencers analyze sponsorship readine
 - Pagination
 - KPI cards
 - Revenue tracking
-- Charts and analytics
+- Interactive charts and analytics
 - CSV export
 - Sidebar navigation
 - User profile page
@@ -39,54 +39,89 @@ A creator analytics dashboard that helps influencers analyze sponsorship readine
 
 ### Dashboard – Part 1
 
-![Dashboard Part 1](public/screenshots/dashboard-1.png)
+![Dashboard Part 1](./public/screenshots/dashboard-1.png)
 
 ### Dashboard – Part 2
 
-![Dashboard Part 2](public/screenshots/dashboard-2.png)
+![Dashboard Part 2](./public/screenshots/dashboard-2.png)
 
 ### Dashboard – Part 3
 
-![Dashboard Part 3](public/screenshots/dashboard-3.png)
+![Dashboard Part 3](./public/screenshots/dashboard-3.png)
 
 ### Dashboard – Part 4
 
-![Dashboard Part 4](public/screenshots/dashboard-4.png)
+![Dashboard Part 4](./public/screenshots/dashboard-4.png)
 
 ---
 
 ### Analytics – Part 1
 
-![Analytics Part 1](public/screenshots/analytics-1.png)
+![Analytics Part 1](./public/screenshots/analytics-1.png)
 
 ### Analytics – Part 2
 
-![Analytics Part 2](public/screenshots/analytics-2.png)
+![Analytics Part 2](./public/screenshots/analytics-2.png)
 
 ---
 
 ### Profile
 
-![Profile](public/screenshots/profile.png)
+![Profile](./public/screenshots/profile.png)
 
 ---
 
 ### Add Creator
 
-![Add Creator](public/screenshots/add-creator.png)
+![Add Creator](./public/screenshots/add-creator.png)
 
 ---
 
 ## Installation
 
+Clone the repository:
+
 ```bash
 git clone https://github.com/priyankasingla2912/SponsorMatch-BI.git
+```
 
+Move to the frontend folder:
+
+```bash
 cd frontend
+```
 
+Install dependencies:
+
+```bash
 npm install
+```
 
+Run the development server:
+
+```bash
 npm run dev
+```
+
+Open:
+
+```text
+http://localhost:3000
+```
+
+---
+
+## Project Structure
+
+```text
+frontend
+├── app
+├── components
+├── public
+│   └── screenshots
+├── lib
+├── package.json
+└── README.md
 ```
 
 ---
@@ -98,3 +133,9 @@ npm run dev
 Master of Science, Computer Science
 
 Boise State University
+
+---
+
+## License
+
+This project was created for educational and portfolio purposes.
