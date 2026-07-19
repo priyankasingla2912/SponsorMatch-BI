@@ -89,7 +89,7 @@ export default function DashboardChart({ creators }) {
       },
     },
   };
-
+  
   return (
     <div className="bg-white p-6 rounded-xl shadow-lg mb-8 h-[500px]">
       <Bar data={data} options={options} />

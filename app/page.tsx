@@ -298,6 +298,23 @@ return (
     View Creator Dashboard
   </button>
 </Link>
+<div className="flex gap-4 mt-6">
+  <Link href="/login">
+    <button 
+    type="button"
+    className="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">
+      Login
+    </button>
+  </Link>
+
+  <Link href="/signup">
+    <button
+    type="button"
+    className="bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700">
+      Sign Up
+    </button>
+  </Link>
+</div>
 
     <form className="w-full max-w-md space-y-4">
 

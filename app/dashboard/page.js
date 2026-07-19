@@ -5,11 +5,21 @@ import { supabase } from "../../lib/supabase";
 import Link from "next/link";
 import DashboardChart from "../components/DashboardChart";
 import StatusPieChart from "../components/StatusPieChart";
+import { useRouter } from "next/navigation";
+import Sidebar from "../components/Sidebar";
+import {
+  Users,
+  Star,
+  DollarSign,
+  Award
+} from "lucide-react";
 
 export default function Dashboard() {
   const [creators, setCreators] = useState([]);
   const [search, setSearch] = useState("");
   const [selectedNiche, setSelectedNiche] = useState("All");
+  const [userEmail, setUserEmail] = useState("");
+  const router = useRouter();
 const topCreator = creators.reduce(
   (best, creator) =>
     creator.followers > (best?.followers || 0)
@@ -30,10 +40,16 @@ const highestScoreCreator = creators.reduce(
   const [currentPage, setCurrentPage] = useState(1);
 
 const creatorsPerPage = 5;
+useEffect(() => {
+  checkUser();
+}, []);
+const totalFollowers = creators.reduce(
+  (sum, creator) => sum + creator.followers,
+  0
+);
 
-  useEffect(() => {
-    fetchCreators();
-  }, []);
+
+  
 
   async function fetchCreators() {
     const { data, error } = await supabase
@@ -66,6 +82,21 @@ const creatorsPerPage = 5;
       );
     }
   }
+ 
+
+async function checkUser() {
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  if (!session) {
+    router.replace("/login");
+    return;
+  }
+  setUserEmail(session.user.email);
+
+  fetchCreators();
+}
 function exportToCSV() {
   const headers = [
     "Creator",
@@ -147,15 +178,22 @@ const totalPages = Math.ceil(
   filteredCreators.length / creatorsPerPage
 );
   return (
-    <main className="p-10">
+    <main className="ml-64 p-10">
+      <Sidebar />
 
       <div className="flex justify-between items-center mb-8">
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-8">
 
-          <h1 className="text-4xl font-bold">
-            Creator Dashboard
-          </h1>
+          <div>
+  <h1 className="text-4xl font-bold">
+    Creator Dashboard
+  </h1>
+
+  <p className="text-sm text-gray-500 mt-1 flex items-center gap-2">
+    👤 Welcome, {userEmail}
+  </p>
+</div>
 
           <input
             type="text"
@@ -211,14 +249,26 @@ const totalPages = Math.ceil(
     </button>
   </Link>
 
+  <button
+    onClick={async () => {
+      await supabase.auth.signOut();
+      router.replace("/login");
+    }}
+    className="bg-red-500 text-white px-5 py-3 rounded-lg shadow"
+  >
+    Logout
+  </button>
+
 </div>
 
       </div>
       {/* KPI Cards */}
 
-<div className="grid grid-cols-4 gap-6 mb-8">
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
 
-  <div className="border p-6 rounded-lg shadow">
+  <div className="bg-blue-100 p-6 rounded-xl shadow">
+    <div className ="flex justify-between items-center">
+        <div>
     <h2 className="text-xl font-bold">
       Total Creators
     </h2>
@@ -228,70 +278,103 @@ const totalPages = Math.ceil(
     </p>
   </div>
 
-  <div className="border p-6 rounded-lg shadow">
-    <h2 className="text-xl font-bold">
-      Premium Partners
-    </h2>
-
-    <p className="text-3xl mt-2">
-      {
-        creators.filter(
-          (creator) =>
-            creator.status === "Premium Partner"
-        ).length
-      }
-    </p>
+   <Users size ={40} />
   </div>
+</div>
 
-  <div className="border p-6 rounded-lg shadow">
-    <h2 className="text-xl font-bold">
-      Average Score
-    </h2>
+  <div className="bg-green-100 p-6 rounded-xl shadow">
 
-    <p className="text-3xl mt-2">
-      {
-        creators.length > 0
-          ? Math.round(
-              creators.reduce(
-                (sum, creator) =>
-                  sum + creator.score,
-                0
-              ) / creators.length
-            )
-          : 0
-      }
-    </p>
-  </div>
+  <div className="flex justify-between items-center">
 
-  <div className="border p-6 rounded-lg shadow">
+    <div>
 
-    <h2 className="text-xl font-bold">
-      Total Revenue
-    </h2>
+      <h2 className="text-xl font-bold">
+        Total Followers
+      </h2>
 
-    <p className="text-3xl mt-2">
-      $
-      {
-        creators.reduce((sum, creator) => {
+      <p className="text-3xl mt-2">
+        {totalFollowers.toLocaleString()}
+      </p>
 
-          const revenue = parseInt(
-            creator.estimated_revenue
-              ?.replace("$", "")
-              ?.replace(",", "")
-          );
+    </div>
 
-          return sum + (revenue || 0);
-
-        }, 0)
-      }
-    </p>
+    <Users size={40} />
 
   </div>
 
 </div>
+  <div className="bg-yellow-100 p-6 rounded-xl shadow">
+
+  <div className="flex justify-between items-center">
+
+    <div>
+
+      <h2 className="text-xl font-bold">
+        Average Score
+      </h2>
+
+      <p className="text-3xl mt-2">
+        {
+          creators.length > 0
+            ? Math.round(
+                creators.reduce(
+                  (sum, creator) =>
+                    sum + (creator.score || 0),
+                  0
+                ) / creators.length
+              )
+            : 0
+        }
+      </p>
+
+    </div>
+
+    <Star size={40} />
+
+  </div>
+
+</div>
+  <div className="bg-purple-100 p-6 rounded-xl shadow">
+
+  <div className="flex justify-between items-center">
+
+    <div>
+
+      <h2 className="text-xl font-bold">
+        Total Revenue
+      </h2>
+
+      <p className="text-3xl mt-2">
+
+        $
+        {
+          creators.reduce((sum, creator) => {
+
+            const revenue = parseInt(
+              creator.estimated_revenue
+                ?.replace("$", "")
+                ?.replace(",", "")
+            );
+
+            return sum + (revenue || 0);
+
+          }, 0)
+          .toLocaleString()
+        }
+
+      </p>
+
+    </div>
+
+    <DollarSign size={40} />
+
+  </div>
+
+</div>
+</div>
 {/* Insights */}
 
-<div className="grid grid-cols-2 gap-6 mb-8">
+<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
 
   <div className="bg-blue-100 p-6 rounded-xl shadow">
 
@@ -336,8 +419,13 @@ const totalPages = Math.ceil(
 
 
 
-      
-      <table className="w-full border">
+ <div className="overflow-x-auto">  </div>
+
+  <table className="w-full border">
+    
+    
+
+     
 
         
 
@@ -396,7 +484,15 @@ const totalPages = Math.ceil(
         </Link>
 
         <button
-          onClick={() => deleteCreator(creator.id)}
+          onClick={() => {
+  if (
+    window.confirm(
+      "Are you sure you want to delete this creator?"
+    )
+  ) {
+    deleteCreator(creator.id);
+  }
+}}
           className="bg-red-500 text-white px-3 py-1 rounded"
         >
           Delete
