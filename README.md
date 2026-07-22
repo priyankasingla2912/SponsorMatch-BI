@@ -1,6 +1,6 @@
 # SponsorMatch BI
 
-A creator analytics dashboard that helps influencers analyze sponsorship readiness, engagement, and revenue opportunities.
+A creator analytics dashboard that helps influencers analyze sponsorship readiness, engagement, revenue opportunities, and brand collaborations.
 
 🔗 Live Demo: https://sponsor-match-bi.vercel.app
 
@@ -13,10 +13,16 @@ A creator analytics dashboard that helps influencers analyze sponsorship readine
 - User authentication (Login / Signup / Logout)
 - Protected dashboard
 - Creator management (Create, Read, Update, Delete)
-- Search, filtering, and sorting
-- Pagination
-- KPI cards
-- Revenue tracking
+- Search, filtering, sorting, and pagination
+- KPI cards and analytics dashboard
+- Revenue and sponsorship price estimation
+- Brand recommendations based on creator niche
+- Sponsorship insights and recommendations
+- Social media profile integration:
+  - Instagram
+  - YouTube
+  - TikTok
+  - LinkedIn
 - Interactive charts and analytics
 - CSV export
 - Sidebar navigation
@@ -24,7 +30,7 @@ A creator analytics dashboard that helps influencers analyze sponsorship readine
 
 ---
 
-## Tech Stack
+## Technologies Used
 
 - Next.js
 - React
@@ -37,39 +43,33 @@ A creator analytics dashboard that helps influencers analyze sponsorship readine
 
 ## Screenshots
 
-### Dashboard – Part 1
+### Dashboard Part 1
 
-![Dashboard Part 1](./public/screenshots/dashboard-1.png)
+![Dashboard 1](./public/screenshots/dashboard-1.png)
 
-### Dashboard – Part 2
+### Dashboard Part 2
 
-![Dashboard Part 2](./public/screenshots/dashboard-2.png)
+![Dashboard 2](./public/screenshots/dashboard-2.png)
 
-### Dashboard – Part 3
+### Dashboard Part 3
 
-![Dashboard Part 3](./public/screenshots/dashboard-3.png)
+![Dashboard 3](./public/screenshots/dashboard-3.png)
 
-### Dashboard – Part 4
+### Dashboard Part 4
 
-![Dashboard Part 4](./public/screenshots/dashboard-4.png)
+![Dashboard 4](./public/screenshots/dashboard-4.png)
 
----
+### Analytics Part 1
 
-### Analytics – Part 1
+![Analytics 1](./public/screenshots/analytics-1.png)
 
-![Analytics Part 1](./public/screenshots/analytics-1.png)
+### Analytics Part 2
 
-### Analytics – Part 2
-
-![Analytics Part 2](./public/screenshots/analytics-2.png)
-
----
+![Analytics 2](./public/screenshots/analytics-2.png)
 
 ### Profile
 
 ![Profile](./public/screenshots/profile.png)
-
----
 
 ### Add Creator
 
@@ -136,6 +136,6 @@ Boise State University
 
 ---
 
-## License
+## Note
 
 This project was created for educational and portfolio purposes.
