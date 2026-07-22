@@ -2,6 +2,8 @@
 
 A creator analytics dashboard that helps influencers analyze sponsorship readiness, engagement, revenue opportunities, and brand collaborations.
 
+The platform automatically generates sponsorship scores, revenue estimates, recommended brands, and collaboration insights based on creator data.
+
 🔗 Live Demo: https://sponsor-match-bi.vercel.app
 
 🔗 GitHub Repository: https://github.com/priyankasingla2912/SponsorMatch-BI
@@ -34,7 +36,7 @@ A creator analytics dashboard that helps influencers analyze sponsorship readine
 
 - Next.js
 - React
-- Supabase
+- Supabase (Database & Authentication)
 - Tailwind CSS
 - Chart.js
 - Vercel
@@ -103,7 +105,7 @@ Run the development server:
 npm run dev
 ```
 
-Open:
+Open the application in your browser:
 
 ```text
 http://localhost:3000
