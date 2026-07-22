@@ -89,6 +89,58 @@ export default function CreatorProfile() {
         <p className="mb-4">
           <strong>Brands:</strong> {creator.recommended_brands}
         </p>
+        <p className="mb-4">
+  <strong>Instagram:</strong>
+
+  <a
+    href={creator.instagram_url}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-blue-500 ml-2 underline"
+  >
+    Open Instagram
+  </a>
+</p>
+
+<p className="mb-4">
+  <strong>YouTube:</strong>
+
+  <a
+    href={creator.youtube_url}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-blue-500 ml-2 underline"
+  >
+    Open YouTube
+  </a>
+</p>
+
+<p className="mb-4">
+  <strong>TikTok:</strong>
+
+  <a
+    href={creator.tiktok_url}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-blue-500 ml-2 underline"
+  >
+    Open TikTok
+  </a>
+</p>
+
+<p className="mb-4">
+  <strong>LinkedIn:</strong>
+
+  <a
+    href={creator.linkedin_url}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-blue-500 ml-2 underline"
+  >
+    Open LinkedIn
+  </a>
+</p>
+
 
         <p className="mb-2">
           <strong>Recommendation:</strong>
