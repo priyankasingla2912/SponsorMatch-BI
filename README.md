@@ -17,9 +17,9 @@ The platform automatically generates sponsorship scores, revenue estimates, reco
 - Creator management (Create, Read, Update, Delete)
 - Search, filtering, sorting, and pagination
 - KPI cards and analytics dashboard
-- Revenue and sponsorship price estimation
-- Brand recommendations based on creator niche
-- Sponsorship insights and recommendations
+- Automatic revenue and sponsorship price estimation
+- Automatic brand recommendations based on creator niche
+- AI-inspired sponsorship insights and recommendations
 - Social media profile integration:
   - Instagram
   - YouTube
